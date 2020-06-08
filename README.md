@@ -1,6 +1,6 @@
 # defnw
 
-A Clojure library that derfines defnw, a macro that replaces 
+A Clojure library that defines `defnw`, a macro that replaces 
 defn so as to allow definition of special cases in the pre-post map.
 
 ## Rational 
@@ -24,19 +24,21 @@ defnw increases readability by allowing to limit the body of the function to
 the main purpose of the code (the :else clause), moving the argument testing
 to the pre-post map.
 
+Unlike conditions in the :pre vector of the pre-post map, conditions in the :cond
+vecotr do not generate assert failures. Each condition must be followed by an
+expression returned when the condition is true.
+
 
 ## Usage
 
 ```
 
   (defnw add-display-name
-    [{:keys [first-name last-name age] :as person}]
+    [{:keys [ first-name last-name name-withwheld? ] :as person}]
 
-      {:pre [(string? last-name) 
-              (int? age)
-              (seq last-name)]
+      {:pre [(string? last-name)]
 
-       :cond [(< age 18) person]}
+       :cond [name-withheld? person]}
 
       (assoc person
              :display-name
