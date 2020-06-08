@@ -49,7 +49,7 @@ evaluated and returned when the condition is met.
 ### Caveats
 
  * body is wrapped in `do`
- * if you're redefining `cond` or `do`, well ...
+ * if you're redefining `cond`, `defn`, or `do`, well ...
  * This is a learning exercise; use at your own risk
 
 ## License
