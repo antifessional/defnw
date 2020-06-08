@@ -58,6 +58,7 @@
   (is (nil? (m1 7 10)))
   (is (contains? (meta #'m2) :custom-meta))       
   (is (contains? (meta #'m1) :big))
+  ; add assertion fail tests
   (let [rval1 (add-display-name p1)
         rval2 (add-display-name p2)]
     (is (not (contains? rval1 :display-name)))

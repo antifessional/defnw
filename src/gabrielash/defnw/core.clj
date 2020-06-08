@@ -40,17 +40,21 @@
 
     #_(do (println "<<< " match-map)
           (println ">   " pp)
-          (println ">>  " conds )
+          (println ">>  " conds)
           (println "[]> " argv)
           (println "()> " body))
-
+    
+    (when conds (do  (assert (vector? conds) "defnw -> :cond value must be a vector!")
+                     (assert (seq conds) "defnw -> :cond vector cannot be empty!")
+                     (assert (even? (count conds)) "defnw -> odd number of exprs given to :cond!")))
+    
     (cond  conds  (seq
-                    [argv
-                     pp
-                     (-> conds 
-                         (conj :else body)
-                         (seq)
-                         (conj 'cond))])
+                   [argv
+                    pp
+                    (-> conds
+                        (conj :else body)
+                        (seq)
+                        (conj 'cond))])
            pp      (seq [argv pp body])
            :else   (seq [argv body]))))
 
