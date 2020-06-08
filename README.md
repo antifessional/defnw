@@ -24,7 +24,7 @@ the main purpose of the code (the `:else` clause), moving argument testing
 to the pre-post map.
 
 This is partiallly similar to `pre`. But, unlike conditions in the `:pre` 
-vector of the pre-post map, conditions in the `:cond` vecotr do not generate 
+vector of the pre-post map, conditions in the `:cond` vector do not generate 
 assert failures. Each condition must be followed  by an expression to be 
 evaluated and returned when the condition is met.
 
