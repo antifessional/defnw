@@ -44,8 +44,8 @@
           (println "[]> " argv)
           (println "()> " body))
     
-    (when conds (do  (assert (vector? conds) "defnw -> :cond value must be a vector!")
-                     (assert (seq conds) "defnw -> :cond vector cannot be empty!")
+    (when conds (do  (assert (vector? conds)       "defnw -> :cond value must be a vector!")
+                     (assert (seq conds)           "defnw -> :cond vector cannot be empty!")
                      (assert (even? (count conds)) "defnw -> odd number of exprs given to :cond!")))
     
     (cond  conds  (seq
