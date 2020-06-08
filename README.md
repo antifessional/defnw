@@ -33,14 +33,14 @@ to the pre-post map.
     [{:keys [first-name last-name age] :as person}]
 
       {:pre [(string? last-name) 
-         (int? age)
-         (seq last-name)]
+              (int? age)
+              (seq last-name)]
+
        :cond [(< age 18) person]}
 
-
       (assoc person
-         :display-name
-         (str first-name " " last-name)))
+             :display-name
+             (str first-name " " last-name)))
 
 ```
 
