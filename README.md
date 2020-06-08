@@ -45,6 +45,11 @@ expression returned when the condition is true.
 
 ```
 
+### Caveats
+
+ * body is wrapped in `do`
+ * if you're redefining `cond` or `do`, well ...
+
 
 ## License
 

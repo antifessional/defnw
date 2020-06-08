@@ -12,14 +12,17 @@
   (def p1 {:first-name "Jane" :last-name "Smith" :name-withheld? true})
   (def p2 {:first-name "Don" :last-name "Brown" :name-withheld? false})
 
-  (defnw m1
+  (defnw ^:big m1
     "doc"
     [x y]
     {:cond [(> x 0) nil]}
     (prn x)
     (* x y))
 
-  (defnw m2 "doc"
+  (defnw 
+    m2 
+    "doc"
+    {:custom-meta :interesting} 
     ([x y & rs]
     (= x 7))
     ([]
@@ -28,6 +31,8 @@
     {:cond [(> x 0) nil]}
     (prn x)
     (* x y)))
+
+
 
 
   (defnw add-display-name
@@ -50,6 +55,8 @@
   (is (true? (m2 7 7 5)))
   (is (= -70 (m1 -7 10)))
   (is (nil? (m1 7 10)))
+  (is (contains? (meta #'m2) :custom-meta))       
+  (is (contains? (meta #'m1) :big))
   (let [rval1 (add-display-name p1)
         rval2 (add-display-name p2)]
     (is (not (contains? rval1 :display-name)))
