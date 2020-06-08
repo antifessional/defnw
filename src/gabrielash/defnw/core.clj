@@ -57,7 +57,8 @@
 
 (defmacro defnw
   "defn alternative that allows definition of 
-      boundary conditions inside the pre-post map"
+     conditions and return values for special cases 
+     inside the pre-post map"
   [& definition]
   (let [match-map (se/exec
                    fn-def definition)
