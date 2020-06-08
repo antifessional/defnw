@@ -39,7 +39,7 @@
   (defnw add-display-name
     [{:keys [ first-name last-name name-withheld? ] :as person}]
 
-      {:pre [(string? last-name)]
+      {:pre [(string? last-name) (seq last-name)]
        :cond [name-withheld? person]}
 
       (assoc person
