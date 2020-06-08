@@ -35,19 +35,19 @@
   (let [match-map (se/exec args+pp+body body)
         pp (first (:pp match-map))
         argv (first (:argv match-map))
-        b-conds (:cond pp)
+        conds  (:cond pp)
         body (cons 'do (:body match-map))]
 
     #_(do (println "<<< " match-map)
           (println ">   " pp)
-          (println ">>  " b-conds)
+          (println ">>  " conds )
           (println "[]> " argv)
           (println "()> " body))
 
-    (cond  b-conds (seq
+    (cond  conds  (seq
                     [argv
                      pp
-                     (-> b-conds
+                     (-> conds 
                          (conj :else body)
                          (seq)
                          (conj 'cond))])
