@@ -49,7 +49,7 @@ expression returned when the condition is true.
 
  * body is wrapped in `do`
  * if you're redefining `cond` or `do`, well ...
-
+ * This is a learning exercise, use at your own risk
 
 ## License
 
@@ -65,3 +65,5 @@ Public License, v. 2.0 are satisfied: GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or (at your
 option) any later version, with the GNU Classpath Exception which is available
 at https://www.gnu.org/software/classpath/license.html.
+
+This code is provided as is, without any guarantee whatsoever.
