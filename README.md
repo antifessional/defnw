@@ -1,14 +1,39 @@
 # defnw
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library that derfines defnw, a macro that replaces 
+defn so as to allow definition of special cases in the pre-post map.
+
+## Rational 
+
+A common pattern is to test arguments for certain conditions that are incompatible 
+with the execution of the function's main purpose. 
+
+'''
+
+ (defn do-that 
+  [ arg-1 arg-2 ]
+    (cond (that-is-inapropriate? arg-1)
+          proper-return-value
+          (that-is-impossible-with? arg-2)
+          proper-return-value-2
+
+          :else 
+          (actually-do-that arg-1 arg-2))
+
+'''
+
+defnw increases readability by allowing to limit the body of the function to
+the main purpose of the code (the :else clause), moving the argument testing
+to the pre-post map.
+
 
 ## Usage
 
-FIXME
+
 
 ## License
 
-Copyright © 2020 FIXME
+Copyright © 2020 Gabriel Ash
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
