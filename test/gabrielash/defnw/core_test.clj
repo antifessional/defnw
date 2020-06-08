@@ -9,8 +9,8 @@
             [gabrielash.defnw.core :refer :all]))
 
 
-  (def p1 {:first-name "Jane" :last-name "Smith" :age 15})
-  (def p2 {:first-name "Don" :last-name "Brown" :age 25})
+  (def p1 {:first-name "Jane" :last-name "Smith" :name-withheld? true})
+  (def p2 {:first-name "Don" :last-name "Brown" :name-withheld? false})
 
   (defnw m1
     "doc"
@@ -31,12 +31,10 @@
 
 
   (defnw add-display-name
-    [{:keys [first-name last-name age] :as person}]
+    [{:keys [ first-name last-name name-withheld? ] :as person}]
 
-      {:pre [(string? last-name) 
-         (int? age)
-         (seq last-name)]
-       :cond [(< age 18) person]}
+      {:pre [(string? last-name)]
+       :cond [name-withheld? person]}
 
       (assoc person
          :display-name
@@ -52,7 +50,7 @@
   (is (true? (m2 7 7 5)))
   (is (= -70 (m1 -7 10)))
   (is (nil? (m1 7 10)))
-  (let [p1 (add-display-name p1)
-        p2 (add-display-name p2)]
-    (is (not (contains? p1 :display-name)))
-    (is (contains? p2 :display-name))))
+  (let [rval1 (add-display-name p1)
+        rval2 (add-display-name p2)]
+    (is (not (contains? rval1 :display-name)))
+    (is (contains? rval2 :display-name))))
