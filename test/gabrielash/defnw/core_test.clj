@@ -9,40 +9,38 @@
             [gabrielash.defnw.core :refer :all]))
 
 
-(defnw m1
-  "doc"
-  [x y]
-  {:cond [(> x 0) nil]}
-  (prn x)
-  (* x y))
+  (def p1 {:first-name "Jane" :last-name "Smith" :age 15})
+  (def p2 {:first-name "Don" :last-name "Brown" :age 25})
 
-(defnw m2 "doc"
-  ([x y & rs]
-   (= x 7))
-  ([]
-   7)
-  ([x y]
-   {:cond [(> x 0) nil]}
-   (prn x)
-   (* x y)))
+  (defnw m1
+    "doc"
+    [x y]
+    {:cond [(> x 0) nil]}
+    (prn x)
+    (* x y))
 
+  (defnw m2 "doc"
+    ([x y & rs]
+    (= x 7))
+    ([]
+     7)
+    ([x y]
+    {:cond [(> x 0) nil]}
+    (prn x)
+    (* x y)))
+    
+  (defnw add-display-name
+    [{:keys [first-name last-name age] :as person}]
 
-
-(defnw add-display-name
-  [{:keys [first-name last-name age] :as person}]
-
-  {:pre [(string? last-name) 
+      {:pre [(string? last-name) 
          (int? age)
          (seq last-name)]
-   :cond [(< age 18) person]}
+       :cond [(< age 18) person]}
 
-  (assoc person
+      (assoc person
          :display-name
          (str first-name " " last-name)))
 
-
-(def p1 {:first-name "Jane" :last-name "Smith" :age 15})
-(def p2 {:first-name "Don" :last-name "Brown" :age 25})
 
 
 (deftest defnw-test
