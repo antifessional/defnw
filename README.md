@@ -12,10 +12,9 @@ with the execution of the function's main purpose.
     (defn do-that 
       [ arg-1 arg-2 ]
         (cond (that-is-inapropriate? arg-1)
-              proper-return-value
+              special-case-return-value
               (that-is-impossible-with? arg-2)
-              proper-return-value-2
-
+              special-case-return-value-2
               :else 
               (actually-do-that arg-1 arg-2))
 ```
