@@ -5,8 +5,8 @@ defn so as to allow definition of special cases in the pre-post map.
 
 ## Rational 
 
-A common pattern is to test arguments for certain conditions that are incompatible 
-with the execution of the function's main purpose. 
+A common pattern is to test arguments for certain conditions that preclude
+the execution of the function's main purpose.
 
 ```
     (defn do-that 
@@ -19,13 +19,14 @@ with the execution of the function's main purpose.
               (actually-do-that arg-1 arg-2))
 ```
 
-defnw increases readability by allowing to limit the body of the function to
-the main purpose of the code (the :else clause), moving the argument testing
+`defnw` increases readability by limiting the body of the function to
+the main purpose of the code (the `:else` clause), moving argument testing
 to the pre-post map.
 
-Unlike conditions in the :pre vector of the pre-post map, conditions in the :cond
-vecotr do not generate assert failures. Each condition must be followed by an
-expression returned when the condition is true.
+This is partiallly similar to `pre`. But, unlike conditions in the `:pre` 
+vector of the pre-post map, conditions in the `:cond` vecotr do not generate 
+assert failures. Each condition must be followed  by an expression to be 
+evaluated and returned when the condition is met.
 
 
 ## Usage
@@ -49,7 +50,7 @@ expression returned when the condition is true.
 
  * body is wrapped in `do`
  * if you're redefining `cond` or `do`, well ...
- * This is a learning exercise, use at your own risk
+ * This is a learning exercise; use at your own risk
 
 ## License
 
