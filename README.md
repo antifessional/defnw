@@ -8,7 +8,7 @@ defn so as to allow definition of special cases in the pre-post map.
 A common pattern is to test arguments for certain conditions that are incompatible 
 with the execution of the function's main purpose. 
 
-'''
+```
     (defn do-that 
       [ arg-1 arg-2 ]
         (cond (that-is-inapropriate? arg-1)
@@ -18,7 +18,7 @@ with the execution of the function's main purpose.
 
           :else 
           (actually-do-that arg-1 arg-2))
-'''
+```
 
 defnw increases readability by allowing to limit the body of the function to
 the main purpose of the code (the :else clause), moving the argument testing
