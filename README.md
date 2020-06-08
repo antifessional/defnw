@@ -9,17 +9,15 @@ A common pattern is to test arguments for certain conditions that are incompatib
 with the execution of the function's main purpose. 
 
 '''
-
- (defn do-that 
-  [ arg-1 arg-2 ]
-    (cond (that-is-inapropriate? arg-1)
+    (defn do-that 
+      [ arg-1 arg-2 ]
+        (cond (that-is-inapropriate? arg-1)
           proper-return-value
           (that-is-impossible-with? arg-2)
           proper-return-value-2
 
           :else 
           (actually-do-that arg-1 arg-2))
-
 '''
 
 defnw increases readability by allowing to limit the body of the function to
