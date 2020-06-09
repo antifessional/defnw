@@ -47,7 +47,7 @@ evaluated and returned when the condition is met.
 ```
 
   (ns my-namespace 
-    (:require [gabrielash.defnw.core :refer [defnw]))
+    (:require [gabrielash.defnw.core :refer [defnw]]))
 
   (defnw add-display-name
     [{:keys [ first-name last-name name-withwheld? ] :as person}]
