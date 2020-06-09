@@ -35,7 +35,7 @@ evaluated and returned when the condition is met.
 
 #### Leiningen
 
-`[gabrielash.defnw "0.1.0"]
+`[gabrielash.defnw "0.1.0"]`
 
 
 ### Example
