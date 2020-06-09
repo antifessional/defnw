@@ -31,9 +31,9 @@ evaluated and returned when the condition is met.
 
 ## Usage
 
-### Dependencies
+##### Dependencies
 
-#### Leiningen
+###### Leiningen
 
 `[gabrielash.defnw "0.1.0"]`
 
