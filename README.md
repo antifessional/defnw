@@ -31,6 +31,16 @@ evaluated and returned when the condition is met.
 
 ## Usage
 
+### Dependencies
+
+#### Leiningen
+
+`[gabrielash.defnw "0.1.0"]
+
+
+### Example
+
+
 ```
 
   (defnw add-display-name

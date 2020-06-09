@@ -1,4 +1,4 @@
-(defproject defnw "0.1.0-SNAPSHOT"
+(defproject gabrielash.defnw "0.1.0"
   :description "depnw a defn substitute macro with boundary case moved to the pre-post map"
   :url "http://github.com/gabrielash"
 
