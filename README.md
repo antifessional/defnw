@@ -31,7 +31,7 @@ evaluated and returned when the condition is met.
 
 ## Usage
 
-##### Dependencies
+### Dependencies
 
 ###### Leiningen
 
@@ -44,8 +44,10 @@ evaluated and returned when the condition is met.
 
 ### Example
 
-
 ```
+
+  (ns my-namespace 
+    (:require [gabrielash.defnw.core :refer [defnw]))
 
   (defnw add-display-name
     [{:keys [ first-name last-name name-withwheld? ] :as person}]
