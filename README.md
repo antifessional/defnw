@@ -3,6 +3,8 @@
 A Clojure library that defines `defnw`, a macro that replaces 
 defn so as to allow definition of special cases in the pre-post map.
 
+[![Build Status](https://travis-ci.org/gabrielash/defnw.svg?branch=master)](https://travis-ci.org/gabrielash/defnw)
+
 ## Rational 
 
 A common pattern is to test arguments for certain conditions that preclude
