@@ -37,6 +37,10 @@ evaluated and returned when the condition is met.
 
 `[gabrielash.defnw "0.1.0"]`
 
+###### Clojure CLI/deps.edn
+
+`gabrielash/defnw {:mvn/version "0.1.0"}`
+
 
 ### Example
 
