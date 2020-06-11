@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file. This change
 
 ## Unrealeased 
 
+### Fixed
+-  Changelog
+
+
+## [0.1.3] - 2020-05-10
+
+### Fixed
+-  project description
+
+
+## [0.1.2] - 2020-05-10
+
+### Fixed
+-  printing of debug information
+
+
 ## [0.1.1] - 2020-05-10
 
 ### Changed
@@ -20,5 +36,7 @@ All notable changes to this project will be documented in this file. This change
 - Everything :)
 
 
-[Unreleased]: https://github.com/your-name/defnw/compare/0.1.1...HEAD
-[0.1.1]: https://github.com/your-name/defnw/compare/0.1.1...0.1.0
+[Unreleased]: https://github.com/your-name/defnw/compare/0.1.3...HEAD
+[0.1.3]: https://github.com/your-name/defnw/compare/0.1.2...0.1.3
+[0.1.2]: https://github.com/your-name/defnw/compare/0.1.1...0.1.2
+[0.1.1]: https://github.com/your-name/defnw/compare/0.1.0...0.1.1
