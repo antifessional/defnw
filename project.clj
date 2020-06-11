@@ -1,4 +1,4 @@
-(defproject gabrielash/defnw "0.1.1"
+(defproject gabrielash/defnw "0.1.2"
   :description "defnw is a defn substitute macro with boundary case moved to the pre-post map"
   :url "http://github.com/gabrielash/defnw"
 

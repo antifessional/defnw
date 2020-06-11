@@ -30,7 +30,7 @@
 
 (defn- wrap-in-let
   [letv body]
-  (println "####" letv body)
+  ;;;(println "####" letv body)
   (if letv
     (do  (assert (vector? letv)       "defnw -> :let value must be a vector!")
          (assert (seq letv)           "defnw -> :let vector cannot be empty!")
@@ -41,7 +41,7 @@
 
 (defn- wrap-in-cond
   [condv body]
-  (println ";;;; " condv)
+  ;;;(println ";;;; " condv)
   (if condv
     (do  (assert (vector? condv)       "defnw -> :cond value must be a vector!")
          (assert (seq condv)           "defnw -> :cond vector cannot be empty!")
@@ -61,7 +61,7 @@
         argv (first (:argv match-map))
         body (cons 'do (:body match-map))]
 
-    (do (println "<<< " match-map)
+    #_(do (println "<<< " match-map)
         (println ">   " pp)
         (println "[]> " argv)
         (println "()> " body))
@@ -96,7 +96,7 @@
                         (concat preamble
                           (map transform-body body)))]
 
-        (do (println "=== " name docstring meta)
+        #_(do (println "=== " name docstring meta)
             (println "**** " preamble)
             (println match-map)
             (println "<*" macroexpanded "*>"))
