@@ -38,14 +38,7 @@ in `:let` vector.
 
 ### Dependencies
 
-###### Leiningen
-
-`[gabrielash.defnw "0.1.0"]`
-
-###### Clojure CLI/deps.edn
-
-`gabrielash/defnw {:mvn/version "0.1.0"}`
-
+[![Clojars Project](https://img.shields.io/clojars/v/gabrielash/defnw.svg)](https://clojars.org/gabrielash/defnw)
 
 ### Example
 
