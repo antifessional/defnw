@@ -36,7 +36,7 @@ in `:let` vector.
 
 ## Usage
 
-### Dependencies
+### Include in  project
 
 [![Clojars Project](https://img.shields.io/clojars/v/gabrielash/defnw.svg)](https://clojars.org/gabrielash/defnw)
 
