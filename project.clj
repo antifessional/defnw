@@ -1,5 +1,7 @@
-(defproject gabrielash/defnw "0.1.2"
-  :description "defnw is a defn substitute macro with boundary case moved to the pre-post map"
+(defproject gabrielash/defnw "0.1.3"
+  :description
+  "defnw is a defn substitute macro with special cases handling 
+   moved to the pre-post map"
   :url "http://github.com/gabrielash/defnw"
 
   :license {:name "GPL-2.0-or-later WITH Classpath-exception-2.0"
