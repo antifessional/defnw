@@ -1,11 +1,11 @@
 # defnw
 
 A Clojure library that defines `defnw`, a macro that replaces 
-defn so as to allow definition of special cases in the pre-post map.
+defn so as to handle special cases in the pre-post map.
 
 [![Build Status](https://travis-ci.org/gabrielash/defnw.svg?branch=master)](https://travis-ci.org/gabrielash/defnw)
 
-## Rational 
+## Rationale 
 
 A common pattern is to test arguments for certain conditions that preclude
 the execution of the function's main purpose.
@@ -22,13 +22,16 @@ the execution of the function's main purpose.
 ```
 
 `defnw` increases readability by limiting the body of the function to
-the main purpose of the code (the `:else` clause), moving argument testing
-to the pre-post map.
+its main purpose (the `:else` clause), moving argument testing to the
+pre-post map.
 
 This is partiallly similar to `pre`. But, unlike conditions in the `:pre` 
-vector of the pre-post map, conditions in the `:cond` vector do not generate 
-assert failures. Each condition must be followed  by an expression to be 
+vector of the pre-post map, conditions in the `:cond` vector do not trigger
+assert failures. Each condition must be followed by an expression to be 
 evaluated and returned when the condition is met.
+
+Local bindings can be set for the whole function including the `:cond` vector
+in `:let` vector.
 
 
 ## Usage
@@ -68,6 +71,7 @@ evaluated and returned when the condition is met.
 
  * body is wrapped in `do`
  * if you're redefining `cond`, `defn`, or `do`, well ...
+ * :cond/:let with a nil value are ignored
  * This is a learning exercise; use at your own risk
 
 ## License

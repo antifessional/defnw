@@ -28,35 +28,49 @@
                           args+pp+body))))))
 
 
+(defn- wrap-in-let
+  [letv body]
+  (println "####" letv body)
+  (if letv
+    (do  (assert (vector? letv)       "defnw -> :let value must be a vector!")
+         (assert (seq letv)           "defnw -> :let vector cannot be empty!")
+         (assert (even? (count letv)) "defnw -> :let requires even number of exprs!")
+         (seq ['let letv body]))
+    body))
+
+
+(defn- wrap-in-cond
+  [condv body]
+  (println ";;;; " condv)
+  (if condv
+    (do  (assert (vector? condv)       "defnw -> :cond value must be a vector!")
+         (assert (seq condv)           "defnw -> :cond vector cannot be empty!")
+         (assert (even? (count condv)) "defnw -> :cond requires even number of exprs!")
+         (-> condv
+             (conj :else body)
+             (seq)
+             (conj 'cond)))
+    body))
+
+
 (defn- transform-body
-  "moves body into the :else clause of the :cond defined
-   in the pre-post map, if there is such a :cond"
+  "apply pre-post transformations to body if given"
   [body]
   (let [match-map (se/exec args+pp+body body)
         pp (first (:pp match-map))
         argv (first (:argv match-map))
-        conds  (:cond pp)
         body (cons 'do (:body match-map))]
 
-    #_(do (println "<<< " match-map)
-          (println ">   " pp)
-          (println ">>  " conds)
-          (println "[]> " argv)
-          (println "()> " body))
-    
-    (when conds (do  (assert (vector? conds)       "defnw -> :cond value must be a vector!")
-                     (assert (seq conds)           "defnw -> :cond vector cannot be empty!")
-                     (assert (even? (count conds)) "defnw -> odd number of exprs given to :cond!")))
-    
-    (cond  conds  (seq
-                   [argv
-                    pp
-                    (-> conds
-                        (conj :else body)
-                        (seq)
-                        (conj 'cond))])
-           pp      (seq [argv pp body])
-           :else   (seq [argv body]))))
+    (do (println "<<< " match-map)
+        (println ">   " pp)
+        (println "[]> " argv)
+        (println "()> " body))
+
+    (if (seq pp)
+      (seq [argv pp (->> body
+                         (wrap-in-cond (:cond pp))
+                         (wrap-in-let (:let pp)))])
+      (seq [argv body]))))
 
 
 (defmacro defnw
@@ -82,9 +96,9 @@
                         (concat preamble
                           (map transform-body body)))]
 
-        #_(do (println "=== " name docstring meta)
-          (println "**** " preamble)
-          (println match-map)
-          (println "<*" macroexpanded "*>"))
+        (do (println "=== " name docstring meta)
+            (println "**** " preamble)
+            (println match-map)
+            (println "<*" macroexpanded "*>"))
 
     macroexpanded))
