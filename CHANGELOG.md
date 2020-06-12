@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file. This change
 ## Unrealeased 
 
 
-## [0.1.3] - 2020-05-10
+## [0.2.0] - 2020-05-10
 
 ### Added
 -  misc.shorts.!=
