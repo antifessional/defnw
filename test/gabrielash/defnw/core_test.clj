@@ -101,5 +101,7 @@
   ; add assertion fail tests
   (let [rval1 (add-display-name p1)
         rval2 (add-display-name p2)]
+    (is (contains? rval1 :last-name))
+    (is (contains? rval2 :last-name))
     (is (not (contains? rval1 :display-name)))
     (is (contains? rval2 :display-name))))

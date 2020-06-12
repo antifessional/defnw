@@ -6,7 +6,9 @@
 ; This code is provided as is, without any guarantee whatsoever.
 
 (ns gabrielash.defnw.core
-  (:require [net.cgrand.seqexp :as se]))
+  (:require [net.cgrand.seqexp :as se]
+            [gabrielash.misc.shorts :refer :all]
+            ))
 
 (def args+pp+body
   "seqex match for function body declaration based on seqex documentation" 
@@ -30,7 +32,7 @@
 
 (defn- assert-forms-ok? [kword target]
   (assert (vector? target)        (str "defnw -> " kword " value must be a vector!"))
-  (assert (seq target)            (str "defnw -> " kword " vector cannot be empty!"))
+  (assert (!! empty? target)      (str "defnw -> " kword " vector cannot be empty!"))
   (assert (even? (count target))  (str "defnw -> " kword " requires even number of exprs!"))
   true)
 
@@ -77,7 +79,7 @@
         (println "()> " body))
 
     (seq
-     (if (seq pp)
+     (if (!! empty? pp)
        [argv pp (->> body
                      (wrap-in-cond (:cond pp))
                      (wrap-in-let (:let pp)))]

@@ -7,8 +7,7 @@ defn so as to handle special cases in the pre-post map.
 
 ## Rationale 
 
-A common pattern is to test arguments for certain conditions that preclude
-the execution of the function's main purpose.
+A common pattern is to test arguments for certain conditions that preclude the execution of the function's main purpose.
 
 ```
     (defn do-that 
@@ -30,13 +29,12 @@ vector of the pre-post map, conditions in the `:cond` vector do not trigger
 assert failures. Each condition must be followed by an expression to be 
 evaluated and returned when the condition is met.
 
-Local bindings can be set for the whole function including the `:cond` vector
-in `:let` vector.
+Local bindings can be set for the whole function,  including the `:cond`vector, in a `:let` vector.
 
 
 ## Usage
 
-### Include in  project
+### Include in project
 
 [![Clojars Project](https://img.shields.io/clojars/v/gabrielash/defnw.svg)](https://clojars.org/gabrielash/defnw)
 
@@ -66,6 +64,20 @@ in `:let` vector.
  * if you're redefining `cond`, `defn`, or `do`, well ...
  * :cond/:let with a nil value are ignored
  * This is a learning exercise; use at your own risk
+
+
+### Extras
+
+`(:require [gabrielash.misc.shorts :refer :all])` exposes short renames that allow writing
+
+`(!= result 10)` instead of `(not= result 7)` 
+
+and 
+
+`(!! contains? airports :JFK)` rather than `(not (contains? ...))`
+
+
+
 
 ## License
 
