@@ -4,8 +4,12 @@ All notable changes to this project will be documented in this file. This change
 
 ## Unrealeased 
 
-### Fixed
--  Changelog
+
+## [0.1.3] - 2020-05-10
+
+### Added
+-  misc.shorts.!=
+-  misc.shorts.!!
 
 
 ## [0.1.3] - 2020-05-10
@@ -36,7 +40,8 @@ All notable changes to this project will be documented in this file. This change
 - Everything :)
 
 
-[Unreleased]: https://github.com/your-name/defnw/compare/0.1.3...HEAD
+[Unreleased]: https://github.com/your-name/defnw/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/your-name/defnw/compare/0.1.3...0.2.0
 [0.1.3]: https://github.com/your-name/defnw/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/your-name/defnw/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/your-name/defnw/compare/0.1.0...0.1.1
