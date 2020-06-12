@@ -37,29 +37,29 @@
 
 (defn- wrap-in-let
   [letv body]
-  #_(println "####" letv body)
-  (-> letv
-      (when
-       (assert-forms-ok? :let letv))
-      
-      (if 
-        (seq ['let letv body])
-        body)))
+  #_(println "### " letv body)
+  
+  (when letv
+   (assert-forms-ok? :let letv))
+  
+  (if letv
+   (seq ['let letv body])
+    body))
 
 
 (defn- wrap-in-cond
   [condv body]
-  #_(println ";;;; " condv)
-  (-> condv 
-      (when  
-        (assert-forms-ok? :cond condv))      
-      
-      (if 
-        (-> condv
-            (conj :else body)
-            (seq)
-            (conj 'cond))
-        body)))
+  #_(println ";;; " condv)
+   
+  (when condv 
+   (assert-forms-ok? :cond condv))      
+  
+  (if condv
+   (-> condv
+       (conj :else body)
+       (seq)
+       (conj 'cond))
+    body))
 
 
 (defn- transform-body
@@ -70,7 +70,8 @@
         argv (first (:argv match-map))
         body (cons 'do (:body match-map))]
 
-    #_(do (println "<<< " match-map)
+    #_(do 
+        (println "<<< " match-map)
         (println ">   " pp)
         (println "[]> " argv)
         (println "()> " body))
@@ -106,9 +107,10 @@
                         (concat preamble
                           (map transform-body body)))]
 
-        #_(do (println "=== " name docstring meta)
-            (println "**** " preamble)
+        #_(do 
+            (println "=== " name docstring meta)
+            (println "*** " preamble)
             (println match-map)
-            (println "<*" macroexpanded "*>"))
+            (println "<*  " macroexpanded " *>"))
 
     macroexpanded))
