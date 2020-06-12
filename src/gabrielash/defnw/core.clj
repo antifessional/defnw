@@ -28,29 +28,38 @@
                           args+pp+body))))))
 
 
+(defn- assert-forms-ok? [kword target]
+  (assert (vector? target)        (str "defnw -> " kword " value must be a vector!"))
+  (assert (seq target)            (str "defnw -> " kword " vector cannot be empty!"))
+  (assert (even? (count target))  (str "defnw -> " kword " requires even number of exprs!"))
+  true)
+
+
 (defn- wrap-in-let
   [letv body]
-  ;;;(println "####" letv body)
-  (if letv
-    (do  (assert (vector? letv)       "defnw -> :let value must be a vector!")
-         (assert (seq letv)           "defnw -> :let vector cannot be empty!")
-         (assert (even? (count letv)) "defnw -> :let requires even number of exprs!")
-         (seq ['let letv body]))
-    body))
+  #_(println "####" letv body)
+  (-> letv
+      (when
+       (assert-forms-ok? :let letv))
+      
+      (if 
+        (seq ['let letv body])
+        body)))
 
 
 (defn- wrap-in-cond
   [condv body]
-  ;;;(println ";;;; " condv)
-  (if condv
-    (do  (assert (vector? condv)       "defnw -> :cond value must be a vector!")
-         (assert (seq condv)           "defnw -> :cond vector cannot be empty!")
-         (assert (even? (count condv)) "defnw -> :cond requires even number of exprs!")
-         (-> condv
-             (conj :else body)
-             (seq)
-             (conj 'cond)))
-    body))
+  #_(println ";;;; " condv)
+  (-> condv 
+      (when  
+        (assert-forms-ok? :cond condv))      
+      
+      (if 
+        (-> condv
+            (conj :else body)
+            (seq)
+            (conj 'cond))
+        body)))
 
 
 (defn- transform-body
@@ -66,11 +75,12 @@
         (println "[]> " argv)
         (println "()> " body))
 
-    (if (seq pp)
-      (seq [argv pp (->> body
-                         (wrap-in-cond (:cond pp))
-                         (wrap-in-let (:let pp)))])
-      (seq [argv body]))))
+    (seq
+     (if (seq pp)
+       [argv pp (->> body
+                     (wrap-in-cond (:cond pp))
+                     (wrap-in-let (:let pp)))]
+       [argv body]))))
 
 
 (defmacro defnw
