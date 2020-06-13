@@ -86,18 +86,19 @@
        [argv body]))))
 
 
-(defmacro defnw
-  "defn alternative that allows definition of 
+(defmacro -defnw
+  "macro implementation for defn/defn- 
+   alternatives that allows definition of 
      conditions and return values for special cases 
      inside the pre-post map"
-  [& definition]
+  [call-name & definition]
   (let [match-map (se/exec
                    fn-def definition)
         {:keys [name docstring meta]} match-map
         preamble (->> [name docstring meta]
                       (filter identity)
                       (map first)
-                      (concat '(defn)))
+                      (concat `(~call-name)))
         body (cond (contains? match-map :single)
                    [(:single match-map)]
                    (contains? match-map :multiple)
@@ -116,3 +117,18 @@
             (println "<*  " macroexpanded " *>"))
 
     macroexpanded))
+
+
+(defmacro defnw 
+  "defn alternative that allows definition of 
+     conditions and return values for special cases 
+     inside the pre-post map"
+  [& definition] 
+  `(-defnw defn  ~@definition) )
+
+(defmacro defnw-
+  "defn- alternative that allows definition of 
+     conditions and return values for special cases 
+     inside the pre-post map"
+  [& definition]
+  `(-defnw defn-  ~@definition))

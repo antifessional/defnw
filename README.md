@@ -1,7 +1,7 @@
 # defnw
 
-A Clojure library that defines `defnw`, a macro that replaces 
-defn so as to handle special cases in the pre-post map.
+A Clojure library that defines `defnw` and `defnw-`, macros that replace
+`defn` and `defn-` so as to handle special cases in the pre-post map.
 
 [![Build Status](https://travis-ci.org/gabrielash/defnw.svg?branch=master)](https://travis-ci.org/gabrielash/defnw)
 

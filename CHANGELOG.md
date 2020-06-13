@@ -2,10 +2,12 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 
-## Unrealeased 
+## Unrealeased
 
+### Added 
+- defnw- for not exported
 
-## [0.2.0] - 2020-05-10
+## [0.2.0] - 2020-05-12
 
 ### Added
 -  misc.shorts.!=
@@ -29,15 +31,8 @@ All notable changes to this project will be documented in this file. This change
 ### Changed
 -  :let added
 
-### Fixed
-- changelog
-- Readme
-- project name and url
-
 
 ## [0.1.0] - 2020-05-09
-### Changed
-- Everything :)
 
 
 [Unreleased]: https://github.com/your-name/defnw/compare/0.2.0...HEAD

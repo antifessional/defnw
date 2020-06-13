@@ -57,7 +57,8 @@
   
      (+ x y)))
   
-(defnw m4 
+(defnw 
+  m4 
   "a single function in double format"
     [x y]
     {:cond [(> x 0) nil]}
@@ -77,6 +78,69 @@
          :display-name
          (str first-name " " last-name)))
 
+(defnw-
+  m-0
+  [x y]
+  {:cond [(> x 0) nil]}
+  (prn x)
+  (* x y))
+
+(defnw-
+  ^:big m-1
+  "test a single function with dostring and meta"
+  [x y]
+  {:cond [(> x 0) nil]}
+  (prn x)
+  (* x y))
+
+(defnw-
+  m-2
+  "a double function with map meta"
+  {:custom-meta :interesting}
+  ([x y & rs]
+   (= x 7))
+  ([]
+   7)
+  ([x y]
+   {:cond [(> x 0) nil]}
+   (prn x)
+   (* x y)))
+
+  ;; a double with let
+(defnw-
+  m-3
+  {:custom-meta :boring}
+  ([x y]
+   {:let [z (* x y)]
+    :cond [(> x y) 0 (= 0 (* x y)) -1]}
+
+   (+ x y z))
+
+  ([x]
+   {:let [y (* x x)]}
+
+   (+ x y)))
+
+(defnw- 
+  m-4
+  "a single function in double format"
+  [x y]
+  {:cond [(> x 0) nil]}
+  (prn x)
+  (* x y))
+
+
+
+
+(defnw- -add-display-name
+  [{:keys [first-name last-name name-withheld?] :as person}]
+
+  {:pre [(string? last-name) (seq last-name)]
+   :cond [name-withheld? person]}
+
+  (assoc person
+         :display-name
+         (str first-name " " last-name)))
 
 
 (deftest defnw-test
@@ -101,6 +165,35 @@
   ; add assertion fail tests
   (let [rval1 (add-display-name p1)
         rval2 (add-display-name p2)]
+    (is (contains? rval1 :last-name))
+    (is (contains? rval2 :last-name))
+    (is (not (contains? rval1 :display-name)))
+    (is (contains? rval2 :display-name))))
+
+
+
+(deftest defnw--test
+  (is (= 7 (m-2)))
+  (is (nil? (m-2 7 7)))
+  (is (= -49 (m-2 -7 7)))
+  (is (false? (m-2 -7 7 5)))
+  (is (true? (m-2 7 7 5)))
+  (is (= -70 (m-1 -7 10)))
+  (is (nil? (m-1 7 10)))
+  (is (= -70 (m-0 -7 10)))
+  (is (nil? (m-0 7 10)))
+  (is (= -70 (m-4 -7 10)))
+  (is (nil? (m-4 7 10)))
+  (is (= 110  (m-3 10)))
+  (is (= 0 (m-3 10 5)))
+  (is (= 65 (m-3 5 10)))
+  (is (= -1 (m-3 0 5)))
+  (is (contains? (meta #'m-3) :custom-meta))
+  (is (contains? (meta #'m-2) :custom-meta))
+  (is (contains? (meta #'m-1) :big))
+  ; add assertion fail tests
+  (let [rval1 (-add-display-name p1)
+        rval2 (-add-display-name p2)]
     (is (contains? rval1 :last-name))
     (is (contains? rval2 :last-name))
     (is (not (contains? rval1 :display-name)))
