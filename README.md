@@ -60,23 +60,9 @@ Local bindings can be set for the whole function,  including the `:cond`vector, 
 
 ### Caveats
 
- * body is wrapped in `do`
  * if you're redefining `cond`, `defn`, or `do`, well ...
  * :cond/:let with a nil value are ignored
  * This is a learning exercise; use at your own risk
-
-
-### Extras
-
-`(:require [gabrielash.misc.shorts :refer :all])` exposes short renames that allow writing
-
-`(!= result 10)` instead of `(not= result 7)` 
-
-and 
-
-`(!! contains? airports :JFK)` rather than `(not (contains? ...))`
-
-
 
 
 ## License

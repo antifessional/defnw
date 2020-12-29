@@ -1,4 +1,4 @@
-(defproject gabrielash/defnw "0.2.2"
+(defproject gabrielash/defnw "0.2.3"
   :description
   "defnw is a defn substitute macro with special cases handling 
    moved to the pre-post map"
