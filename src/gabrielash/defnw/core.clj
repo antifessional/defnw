@@ -6,12 +6,11 @@
 ; This code is provided as is, without any guarantee whatsoever.
 
 (ns gabrielash.defnw.core
-  "`defnw` and `defnw-` are substitutes for
+  "`defnw`/`defnw-` are substitutes for
   [defn](https://clojuredocs.org/clojure.core/defn)
-  /[defn-](https://clojuredocs.org/clojure.core/defn-)
-  but add an option for `cond` and `let` vectors
-  in the `:pre` map, useful for handling special cases outside
-  the function's body."
+  /[defn-](https://clojuredocs.org/clojure.core/defn-)  
+  but add an option for `:cond` and `:let` vectors in the `:pre` map,  
+  useful for handling special cases outside the function's body."
   (:require [net.cgrand.seqexp :as se]
             [gabrielash.misc.shorts :refer :all]
             ))

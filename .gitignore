@@ -11,3 +11,4 @@ pom.xml.asc
 .hgignore
 .hg/
 .calva/output-window/output.repl
+/.clj-kondo
