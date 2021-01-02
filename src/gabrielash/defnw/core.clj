@@ -91,8 +91,8 @@
        [argv body]))))
 
 
-(defmacro ^:private -defnw
-  "macro implementation for defn/defn- 
+(defmacro -defnw
+  "internal macro implementation for defn/defn- 
    alternatives that allows definition of 
      conditions and return values for special cases 
      inside the pre-post map"
