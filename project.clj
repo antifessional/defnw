@@ -1,4 +1,4 @@
-(defproject gabrielash/defnw "0.2.3"
+(defproject gabrielash/defnw "0.2.4"
   :description
   "defnw is a defn substitute macro with special cases handling 
    moved to the pre-post map"
@@ -10,7 +10,26 @@
   :dependencies [[org.clojure/clojure "1.10.1"] 
                 [net.cgrand/seqexp "0.6.2"]]
 
+  :plugins [
+                [lein-codox "0.10.7"]
+           ]      
+
   ;:repl-options {}
+
+  :codox { 
+      :language :clojure
+      :output-path "/home/gash/docroot/codox/defnw"
+      :source-uri "https://gitea.lab9.antifessional.net:3000/dev/defnw/src/commit/{git-commit}/src/{classpath}"
+      :metadata {:doc/format :markdown}
+      :html {
+            :namespace-list :flat
+            :transforms
+              [[:body [:div.sidebar.primary ]]
+               [:prepend 
+                  [:h3 
+                    [:a {:href "/"} "All Packages"]]]]}
+  }
+
 
 )
 

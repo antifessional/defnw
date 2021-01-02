@@ -6,18 +6,24 @@
 ; This code is provided as is, without any guarantee whatsoever.
 
 (ns gabrielash.defnw.core
+  "`defnw` and `defnw-` are substitutes for
+  [defn](https://clojuredocs.org/clojure.core/defn)
+  /[defn-](https://clojuredocs.org/clojure.core/defn-)
+  but add an option for `cond` and `let` vectors
+  in the `:pre` map, useful for handling special cases outside
+  the function's body."
   (:require [net.cgrand.seqexp :as se]
             [gabrielash.misc.shorts :refer :all]
             ))
 
-(def args+pp+body
+(def ^:private args+pp+body
   "seqex match for function body declaration based on seqex documentation" 
   (se/cat
    (se/as :argv vector?)
    (se/? (se/as :pp map?))
    (se/as :body (se/* se/_))))
 
-(def fn-def
+(def ^:private  fn-def
   "seqex match for full function definition based on seqex documentation"
   (se/cat
    (se/as :name symbol?)
@@ -86,7 +92,7 @@
        [argv body]))))
 
 
-(defmacro -defnw
+(defmacro ^:private -defnw
   "macro implementation for defn/defn- 
    alternatives that allows definition of 
      conditions and return values for special cases 
