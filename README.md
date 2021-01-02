@@ -17,7 +17,7 @@ A common pattern is to test arguments for certain conditions that preclude the e
               (that-is-impossible-with? arg-2)
               special-case-return-value-2
               :else 
-              (actually-do-that arg-1 arg-2))
+              (actually-do-that arg-1 arg-2)))
 ```
 
 `defnw` increases readability by limiting the body of the function to
