@@ -2,7 +2,7 @@
 /classes
 /checkouts
 profiles.clj
-pom.xml
+pom.xnl
 pom.xml.asc
 *.jar
 *.class
@@ -10,5 +10,12 @@ pom.xml.asc
 /.nrepl-port
 .hgignore
 .hg/
-.calva/output-window/output.repl
-/.clj-kondo
+.cache
+.lsp
+.dev
+/dev
+.calva/
+.cpcache/
+.clj-kondo/
+.env
+
