@@ -16,20 +16,6 @@
 
   ;:repl-options {}
 
-  :codox { 
-      :language :clojure
-      :output-path "/home/gash/docroot/codox/defnw"
-      :source-uri "https://gitea.lab9.antifessional.net:3000/dev/defnw/src/commit/{git-commit}/src/{classpath}"
-      :metadata {:doc/format :markdown}
-      :html {
-            :namespace-list :flat
-            :transforms
-              [[:body [:div.sidebar.primary ]]
-               [:prepend 
-                  [:h3 
-                    [:a {:href "/"} "All Packages"]]]]}
-  }
-
 
 )
 
